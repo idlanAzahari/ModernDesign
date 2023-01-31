@@ -1,0 +1,57 @@
+﻿<Window x:Class="ModernDesign.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:ModernDesign.MVVM.ViewModel"
+        xmlns:local="clr-namespace:ModernDesign"
+        mc:Ignorable="d"
+        Height="600" Width="920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Border Background="#318CE7"
+        CornerRadius="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="IME" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="30" FontWeight="Bold" FontFamily="/Fonts/#Poppins"/>
+
+            <StackPanel Grid.Row="1" Background="#F0F8FF">
+
+                <RadioButton Content="Home" Height="50" Foreground="black" FontSize="18" Style="{StaticResource MenuButtonTheme}" IsChecked="True" Command="{Binding HomeViewCommand}"/>
+
+                <RadioButton Content="Custom Properties" Height="50" Foreground="black" FontSize="18" Style="{StaticResource MenuButtonTheme}" Command="{Binding DiscoveryViewCommand}"/>
+
+                <RadioButton Content="BOM" Height="50" Foreground="black" FontSize="18" Style="{StaticResource MenuButtonTheme}"/>
+
+                <RadioButton Content="Configurations" Height="50" Foreground="black" FontSize="18" Style="{StaticResource MenuButtonTheme}"/>
+
+                <RadioButton Content="Save As" Height="50" Foreground="black" FontSize="18" Style="{StaticResource MenuButtonTheme}"/>
+
+            </StackPanel>
+
+            <StackPanel Background="#F0F8FF" Grid.Column="1" Grid.Row="1" />
+
+            <TextBox Width="250" Height="40" VerticalContentAlignment="Center" 
+                     HorizontalAlignment="Left" Margin="5" Grid.Column="1" 
+                     Style="{StaticResource ModernTextbox}"/>
+
+            <ContentControl Grid.Row="1" Grid.Column="1" Margin="20" Content="{Binding CurrentView}" />
+        </Grid>
+    </Border>
+</Window>
